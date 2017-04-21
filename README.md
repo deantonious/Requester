@@ -6,6 +6,8 @@
 
 ## Commands
 
+![Requester Console](https://deantonious.es/wp-content/uploads/2017/04/requester_console.png)
+
 COMMAND                   | DESCRIPTION
 --------------------------| -------------
 help                      |  Display command reference

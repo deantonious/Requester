@@ -2,7 +2,7 @@
 
 # Requester
 
-Simple but useful! Create custom HTTP/HTTPS requests and saves the output to a text file. This is really useful for some CTF challenges and Web Pentesting.
+> Create custom HTTP/HTTPS requests and saves the output to a text file. This is really useful for some CTF challenges and Web Pentesting.
 
 ## Commands
 
@@ -29,4 +29,4 @@ exit                      |  Quit Requester console
 7. (Optional) Enable the file output with "output enable"
 8. Send the request with "send"
 
-Thanks to James for helping teaching me the Python basics and helping me with the development!
+*Thanks to James for helping teaching me the Python basics and helping me with the development!*

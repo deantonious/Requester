@@ -1,9 +1,4 @@
-██████╗ ███████╗ ██████╗ ██╗   ██╗███████╗███████╗████████╗███████╗██████╗ 
-██╔══██╗██╔════╝██╔═══██╗██║   ██║██╔════╝██╔════╝╚══██╔══╝██╔════╝██╔══██╗ 
-██████╔╝█████╗  ██║   ██║██║   ██║█████╗  ███████╗   ██║   █████╗  ██████╔╝ 
-██╔══██╗██╔══╝  ██║▄▄ ██║██║   ██║██╔══╝  ╚════██║   ██║   ██╔══╝  ██╔══██╗ 
-██║  ██║███████╗╚██████╔╝╚██████╔╝███████╗███████║   ██║   ███████╗██║  ██║ 
-╚═╝  ╚═╝╚══════╝ ╚══▀▀═╝  ╚═════╝ ╚══════╝╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝
+[![Requester Logo](https://deantonious.es/wp-content/uploads/2017/04/requester_logo_1.jpg)](https://github.com/deantonious/Requester)
 
 # Requester
 
@@ -33,3 +28,5 @@ exit                      |  Quit Requester console
 6. (Optional) Add parameters to the request with "parameter user username" (if it is already set, you'll remove it)
 7. (Optional) Enable the file output with "output enable"
 8. Send the request with "send"
+
+Thanks to James for helping teaching me the Python basics and helping me with the development!

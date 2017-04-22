@@ -10,10 +10,10 @@ COMMAND                   | DESCRIPTION
 --------------------------| -------------
 help                      |  Display command reference
 depends                   |  Install/Update dependencies
-set [url|method] [value]  |  Set url/method (Methods: POST / GET)
-header [type] [value]     |  Add/Remove header (removes the header it exists)
-parameter [type] [value]  |  Add/Remove parameter (removes the parameter it exists)
-output [enable|disable]   |  Enable/disable file output
+set \[url\|method\] \[value\]  |  Set url/method (Methods: POST / GET)
+header \[type\] \[value\]     |  Add/Remove header (removes the header it exists)
+parameter \[type\] \[value\]  |  Add/Remove parameter (removes the parameter it exists)
+output \[enable\|disable\]   |  Enable/disable file output
 values                    |  Display request values
 send                      |  Execute request
 exit                      |  Quit Requester console

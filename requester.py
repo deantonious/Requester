@@ -37,14 +37,14 @@ print ("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" + BOLD +
  
 def help():
     print (BOLD + " Requester command reference")
-    print ("===========================\n")
+    print (" ===========================\n")
     print (CYAN + "    COMMAND         "+RESET+GREEN+"            DESCRIPTION"+RESET+BOLD)
     print ("    -------                     -----------\n")
     print ("    help                        Display command reference")
     print ("    set [url|method] [value]    Set url/method (Methods: POST / GET)")
     print ("    header [type] [value]       Add/Remove header (removes the header it exists)")
     print ("    parameter [type] [value]    Add/Remove parameter (removes the parameter it exists)")
-    print ("    output [enable|disable]     Enable/disable file output")
+    print ("    output [file|console|none]  Set the output mode (use 'all' to use file and console output)")
     print ("    values                      Display request values")
     print ("    send                        Execute request")
     print ("    exit                        Quit Requester console")
@@ -57,7 +57,7 @@ headers = {  }
 parameters = {  }
 method = "GET"
 url = ""
-output = False
+output = "console"
 
 
 
@@ -127,25 +127,28 @@ while True:
         
     elif command.lower() == "output":
         if len(args) == 2:
-            if args[1].lower() == "enable":
-                output = True
-                print ("File output enabled!")
-            elif args[1].lower() == "disable":
-                output = False
-                print ("File output disabled!")
+            if args[1].lower() == "file":
+                output = "file"
+                print ("Output set to file mode!")
+            elif args[1].lower() == "console":
+                output = "console"
+                print ("Output set to console mode!")
+            elif args[1].lower() == "none":
+                output = "none"
+                print ("Output disabled!")
             else:
                 print ("Please, set the output to enable / disable")
         else:
             print ("Not enough arguments...")
             
     elif command.lower() == "values":
-        outt = "enabled" if output == True else "disabled"
-        print ("[Request Values]=====================")
-        print ("    URL : " + url)
-        print ("    Method : " + method)
-        print ("    Headers : " + str(headers))
-        print ("    Parameters : " + str(parameters))
-        print ("    Output File: " + outt)
+        print ("\n Request Values")
+        print (" ==============")
+        print ("    => URL : " + url)
+        print ("    => Method : " + method)
+        print ("    => Headers : " + str(headers))
+        print ("    => Parameters : " + str(parameters))
+        print ("    => Output Mode: " + output + "\n")
 
     elif command.lower() == "send":
         if url != "":
@@ -161,13 +164,17 @@ while True:
             print ("=> Response code: " + str(request.status_code))
             reponse = request.text
             
-            if output == True:
+            if output == "file" or output == "all":
                 t = time.time()
                 filename = "requester-" + url.split("/")[2] + "-" + method + "-" + str(t) + ".txt"
                 fd = open(filename, "w")
                 fd.write(reponse)
                 fd.close()
                 print ("=> File " + filename + " saved!")
+            elif output == "console" or output == "all":
+                print ("=> Response Content:\n")
+                print (reponse)
+                
         else:
             print ("Please, set a valid url to send the request...")
     elif command.lower() == "exit":

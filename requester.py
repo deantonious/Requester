@@ -12,8 +12,8 @@ REVERSE = "\033[;7m"
 try:
     import requests, colorama #Attempt to import non standard modules
 except ModuleNotFoundError: #If the modules are not found install them with pip
-    print("\n \nMissing required modules.\n \n")
-    install = input ("Attempt to install requirments? (y/n): ")
+    print(RED + "\n \nMissing required modules.")
+    install = input ("[#] Update/install requirments? (y/n) ")
     if install.lower() == "y":
         import os, sys
         os.system("pip install requests colorama")
@@ -36,7 +36,7 @@ print ("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" + BOLD +
       "     v1.1 by deantonious and Jamz\n")
  
 def help():
-    print (BOLD + "Requester command reference")
+    print (BOLD + " Requester command reference")
     print ("===========================\n")
     print (CYAN + "    COMMAND         "+RESET+GREEN+"            DESCRIPTION"+RESET+BOLD)
     print ("    -------                     -----------\n")
@@ -76,7 +76,6 @@ while True:
     if command == "help":
         help()
 
-            
     elif command.lower() == "set":
         if len(args) == 3:
             if args[1].lower() == "url":

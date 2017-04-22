@@ -12,7 +12,7 @@ help                      |  Display command reference
 set \[url\|method\] \[value\]  |  Set url/method (Methods: POST / GET)
 header \[type\] \[value\]     |  Add/Remove header (removes the header it exists)
 parameter \[type\] \[value\]  |  Add/Remove parameter (removes the parameter it exists)
-output \[enable\|disable\]   |  Enable/disable file output
+output \[file\|console\|none]   |  Set the output mode
 values                    |  Display request values
 send                      |  Execute request
 exit                      |  Quit Requester console
@@ -25,7 +25,7 @@ exit                      |  Quit Requester console
 4. Set the request method with "set method [POST|GET]" (by default it's set to GET)
 5. (Optional) Set the request headers (if it is already set, you'll remove it)
 6. (Optional) Add parameters to the request with "parameter user username" (if it is already set, you'll remove it)
-7. (Optional) Enable the file output with "output enable"
+7. (Optional) Set the file output mode with "output console"
 8. Send the request with "send"
 
 ## Screenshots

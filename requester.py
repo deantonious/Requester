@@ -84,7 +84,7 @@ while True:
                     url = args[2]
                     print ("URL set to '" + url + "'")
                 else:
-                    print ("Please, enter the full url...")
+                    print (RED + "Please, enter the full url...")
             elif args[1].lower() == "method":
                 if args[2].lower() == "post":
                     method = "POST"
@@ -95,9 +95,9 @@ while True:
                 else:
                     print ("Set the method to POST / GET")
             else:
-                print ("Please, set the url / method parameter...")
+                print (RED + "Please, set the url / method parameter...")
         else:
-            print ("Not enough arguments...")
+            print (RED + "Not enough arguments...")
             
     elif command.lower() == "header":
         if len(args) > 1:
@@ -110,7 +110,7 @@ while True:
             else:
                 print ("Not enough arguments...")
         else:
-            print ("Not enough arguments...")
+            print (RED + "Not enough arguments...")
             
     elif command.lower() == "parameter":
         if len(args) > 1:
@@ -121,9 +121,9 @@ while True:
                 parameters[args[1]] = args[2]
                 print ("Added parameter '" + args[1] + "=" + args[2] + "'")
             else:
-               print ("Not enough arguments...") 
+               print (RED + "Not enough arguments...") 
         else:
-            print ("Not enough arguments...")
+            print (RED + "Not enough arguments...")
         
     elif command.lower() == "output":
         if len(args) == 2:
@@ -137,9 +137,9 @@ while True:
                 output = "none"
                 print ("Output disabled!")
             else:
-                print ("Please, set the output to enable / disable")
+                print (RED + "Please, set the output to enable / disable")
         else:
-            print ("Not enough arguments...")
+            print (RED + "Not enough arguments...")
             
     elif command.lower() == "values":
         print ("\n Request Values")
@@ -156,27 +156,38 @@ while True:
                 confirmation = input("[#] Do you want to add the default headers? (y/n) ")
                 if confirmation == "y" or confirmation == "":
                     headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0"}
-                    
-            if method == "GET":
-                request = requests.get(url, headers=headers, params=parameters)
-            elif method == "POST":
-                request = requests.post(url, headers=headers, data=parameters)
-            print ("=> Response code: " + str(request.status_code))
-            reponse = request.text
-            
-            if output == "file" or output == "all":
-                t = time.time()
-                filename = "requester-" + url.split("/")[2] + "-" + method + "-" + str(t) + ".txt"
-                fd = open(filename, "w")
-                fd.write(reponse)
-                fd.close()
-                print ("=> File " + filename + " saved!")
-            elif output == "console" or output == "all":
-                print ("=> Response Content:\n")
-                print (reponse)
+            try:
+                if method == "GET":
+                    request = requests.get(url, headers=headers, params=parameters)
+                elif method == "POST":
+                    request = requests.post(url, headers=headers, data=parameters)
+
+                reponse = request.text
+
+                if output == "file" or output == "all":
+                    t = time.time()
+                    filename = "requester-" + url.split("/")[2] + "-" + method + "-" + str(t) + ".txt"
+                    fd = open(filename, "w")
+                    fd.write(reponse)
+                    fd.close()
+                    print ("=> File " + filename + " saved!")
+                elif output == "console" or output == "all":
+                    print ("=> Response Content:\n")
+                    print (reponse)
+
+                print ("=> Response code: " + str(request.status_code))
+
+            except ConnectionRefusedError:
+                print (RED + "Failed to connect, invalid url possible.")
+            except requests.packages.urllib3.exceptions.NewConnectionError:
+                print(RED + "Failed to connect, invalid url possible.")
+            except requests.packages.urllib3.exceptions.MaxRetryError:
+                print(RED + "Reached max retries, invalid url possible.")
+            except requests.exceptions.ConnectionError:
+                print(RED + "Failed to connect, invalid url possible.")
                 
         else:
-            print ("Please, set a valid url to send the request...")
+            print (RED + "Please, set a valid url to send the request...")
     elif command.lower() == "exit":
         print ("See you next time :)")
         break

@@ -33,7 +33,7 @@ print ("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" + BOLD +
       "     ██╔══██╗██╔══╝  ██║▄▄ ██║██║   ██║██╔══╝  ╚════██║   ██║   ██╔══╝  ██╔══██╗\n" +
       "     ██║  ██║███████╗╚██████╔╝╚██████╔╝███████╗███████║   ██║   ███████╗██║  ██║\n" +
       "     ╚═╝  ╚═╝╚══════╝ ╚══▀▀═╝  ╚═════╝ ╚══════╝╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝\n" + RESET +
-      "     v1.1 by deantonious and Jamz\n")
+      "     v1.2 by deantonious and Jamz\n")
  
 def help():
     print (BOLD + " Requester command reference")
@@ -42,10 +42,10 @@ def help():
     print ("    -------                     -----------\n")
     print ("    help                        Display command reference")
     print ("    set [url|method] [value]    Set url/method (Methods: POST / GET)")
-    print ("    header [type] [value]       Add/Remove header (removes the header it exists)")
-    print ("    parameter [type] [value]    Add/Remove parameter (removes the parameter it exists)")
+    print ("    header [type] [value]       Add/Remove header (use 'header [type]' to remove a heder)")
+    print ("    parameter [name] [value]    Add/Remove parameter (use 'parameter [name]' to remove a parameter)")
     print ("    output [file|console|none]  Set the output mode (use 'output all' to use file and console outputs)")
-    print ("    values                      Display request values. (use 'values reset' to reset them)")
+    print ("    options                     Display request options (use 'options reset' to reset them all)")
     print ("    send                        Execute request")
     print ("    exit                        Quit Requester console")
     print ("\n" + RESET)
@@ -99,40 +99,46 @@ while True:
             print (RED + "Not enough arguments...")
             
     elif command == "header":
-        if len(args) > 1:
+        if len(args) == 2:
             if args[1] in headers:
+                # Remove header
                 del headers[args[1]]
                 print ("Removed header '" + args[1] + "'")
-            elif len(args) == 3 and args[2] != "":
+            else:
+                print (RED + "Header not found..." + RESET)
+        elif len(args) == 3:
+            if args[1] in headers:
+                # Override header
+                del headers[args[1]]
+                headers[args[1]] = args[2]
+                print ("Changed header '" + args[1] + "' to '" + args[2] + "'")
+            else:
+                # Add header
                 headers[args[1]] = args[2]
                 print ("Added header '" + args[1] + ": " + args[2] + "'")
-            else:
-                if len(args) < 3:
-                    print (RED + "Not enough arguments..." + RESET)
-                elif len(args) > 3:
-                    print (RED + "Too many arguments..." + RESET)
-                else:
-                    print (RED + "Argument error..." + RESET)
         else:
-            print (RED + "Not enough arguments..." + RESET)
+            print (RED + "Wrong usage..." + RESET)
             
     elif command == "parameter":
-        if len(args) > 1:
+        if len(args) == 2:
             if args[1] in parameters:
+                # Remove parameter
                 del parameters[args[1]]
                 print ("Removed parameter '" + args[1] + "'")
-            elif len(args) == 3 and args[2] != "":
+            else:
+                print (RED + "Parameter not found..." + RESET)
+        elif len(args) == 3:
+            if args[1] in parameters:
+                # Override parameter
+                del parameters[args[1]]
+                parameters[args[1]] = args[2]
+                print ("Changed parameter '" + args[1] + "' to '" + args[2] + "'")
+            else:
+                # Add parameter
                 parameters[args[1]] = args[2]
                 print ("Added parameter '" + args[1] + "=" + args[2] + "'")
-            else:
-                if len(args) < 3:
-                    print (RED + "Not enough arguments..." + RESET)
-                elif len(args) > 3:
-                    print (RED + "Too many arguments..." + RESET)
-                else:
-                    print (RED + "Argument error..." + RESET)
         else:
-            print (RED + "Not enough arguments..." + RESET)
+            print (RED + "Wrong usage..." + RESET)
         
     elif command == "output":
         if len(args) == 2:
@@ -142,18 +148,20 @@ while True:
             elif args[1].lower() == "console":
                 output = "console"
                 print ("Output set to console mode!")
+            elif args[1].lower() == "all":
+                output = "all"
+                print ("Output set to console and file mode!")
             elif args[1].lower() == "none":
                 output = "none"
                 print ("Output disabled!")
             else:
-                print (RED + "Please, set the output to enable / disable" + RESET)
+                print (RED + "Please, set the output to [file|console|all|none]" + RESET)
+        elif len(args) == 1:
+            print ("Output mode: " + output)
         else:
-            if len(args) < 2:
-                print (RED + "Not enough arguments..." + RESET)
-            elif len(args) > 2:
-                print (RED + "Too many arguments..." + RESET)
+            print (RED + "Wrong usage..." + RESET)
             
-    elif command == "values":
+    elif command == "options":
         if len(args) > 1:
             if args[1] == "reset":
                 url = ""
@@ -163,9 +171,9 @@ while True:
                 method = "GET"
                 print ("Options set to default values!")
             else:
-                print (RED + "Available options: reset" + RESET)
+                print (RED + "Available parameters: reset" + RESET)
         else:
-            print ("\n Request Values")
+            print ("\n Request options")
             print (" ==============")
             print ("    => URL : " + url)
             print ("    => Method : " + method)
@@ -186,7 +194,8 @@ while True:
                     request = requests.post(url, headers=headers, data=parameters)
 
                 reponse = request.text
-
+                
+                print ("=> Response code: " + str(request.status_code))
                 if output == "file" or output == "all":
                     t = time.time()
                     filename = "requester-" + url.split("/")[2] + "-" + method + "-" + str(t) + ".txt"
@@ -194,11 +203,9 @@ while True:
                     fd.write(reponse)
                     fd.close()
                     print ("=> File " + filename + " saved!")
-                elif output == "console" or output == "all":
+                if output == "console" or output == "all":
                     print ("=> Response Content:\n")
                     print (reponse)
-
-                print ("=> Response code: " + str(request.status_code))
 
             except ConnectionRefusedError:
                 print (RED + "Failed to connect, invalid url possible." + RESET)

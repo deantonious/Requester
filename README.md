@@ -12,7 +12,7 @@ help                      |  Display command reference
 set \[url\|method\] \[value\]  |  Set url/method (Methods: POST / GET)
 header \[type\] \[value\]     |  Add/Remove header (removes the header it exists)
 parameter \[type\] \[value\]  |  Add/Remove parameter (removes the parameter it exists)
-output \[file\|console\|none]   |  Set the output mode
+output \[file\|console\|none]   |  Set the output mode (use 'all' to use file and console output)
 values                    |  Display request values
 send                      |  Execute request
 exit                      |  Quit Requester console

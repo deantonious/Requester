@@ -34,4 +34,12 @@ exit                      |  Quit Requester console
 
 Requester console 
 
+## License
+
+This project is licensed under the MIT License - see the [license file](LICENSE) for more details. _Please note that if you redistribute this project, you have to include this license on it!_
+
+## Sources, Libraries and Credits
+
+Python HTTP Requests for Humans™ by [kennethreitz](https://github.com/kennethreitz/requests) - http://python-requests.org
+
 *Thanks to James for helping teaching me the Python basics and helping me with the development!*

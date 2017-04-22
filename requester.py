@@ -12,7 +12,7 @@ REVERSE = "\033[;7m"
 try:
     import requests, colorama #Attempt to import non standard modules
 except ModuleNotFoundError: #If the modules are not found install them with pip
-    print(RED + "\n \nMissing required modules.")
+    print("\n \nMissing required modules.")
     install = input ("[#] Update/install requirments? (y/n) ")
     if install.lower() == "y":
         import os, sys

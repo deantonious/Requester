@@ -6,6 +6,8 @@
 
 ## Commands
 
+Use this commands on the Requester console to configure and send your request:
+
 COMMAND                   | DESCRIPTION
 --------------------------| -------------
 help                      |  Display command reference

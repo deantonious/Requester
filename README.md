@@ -31,6 +31,7 @@ exit                      |  Quit Requester console
 ## Screenshots
 
 ![Requester Console](https://deantonious.es/wp-content/uploads/2017/04/requester_console-1.png)
- Requester console 
+
+Requester console 
 
 *Thanks to James for helping teaching me the Python basics and helping me with the development!*

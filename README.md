@@ -8,16 +8,16 @@
 
 Use this commands on the Requester console to configure and send your request:
 
-COMMAND                   | DESCRIPTION
---------------------------| -------------
-help                      |  Display command reference
-set \[url\|method\] \[value\]  |  Set url/method (Methods: POST / GET)
-header \[type\] \[value\]     |  Add/Remove header (removes the header it exists)
-parameter \[type\] \[value\]  |  Add/Remove parameter (removes the parameter it exists)
+COMMAND                         | DESCRIPTION
+--------------------------      | -------------
+help                            |  Display command reference
+set \[url\|method\] \[value\]   |  Set url/method (Methods: POST / GET)
+header \[type\] \[value\]       |  Add/Remove header (use 'header \[type\]' to remove a heder)
+parameter \[name\] \[value\]    |  Add/Remove parameter (use 'parameter \[name\]' to remove a parameter)
 output \[file\|console\|none]   |  Set the output mode (use 'output all' to use file and console outputs)
-values                    |  Display request values. (use 'values reset' to reset them)
-send                      |  Execute request
-exit                      |  Quit Requester console
+options                         |  Display request options (use 'options reset' to reset them all)
+send                            |  Execute request
+exit                            |  Quit Requester console
 
 ## Installation and usage example
 

@@ -59,20 +59,19 @@ method = "GET"
 url = ""
 output = "console"
 
-
-
 setup()
 while True:
 
     line = input("requester > ")
     args = line.split(' ')
-    
+
     if len(args) > 3:
         for i in range(3, len(args)):
-            args[2] += " " + args[i]
+            args[2] += " " + args[3]
+            args.remove(args[3])
             
     command = args[0].lower()
-
+    print (args)
     if command == "help":
         help()
 
@@ -108,9 +107,9 @@ while True:
                 headers[args[1]] = args[2]
                 print ("Added header '" + args[1] + ": " + args[2] + "'")
             else:
-                if len(args) < 3
+                if len(args) < 3:
                     print (RED + "Not enough arguments..." + RESET)
-                elif len(args) > 3
+                elif len(args) > 3:
                     print (RED + "Too many arguments..." + RESET)
                 else:
                     print (RED + "Argument error..." + RESET)
@@ -126,9 +125,9 @@ while True:
                 parameters[args[1]] = args[2]
                 print ("Added parameter '" + args[1] + "=" + args[2] + "'")
             else:
-                if len(args) < 3
+                if len(args) < 3:
                     print (RED + "Not enough arguments..." + RESET)
-                elif len(args) > 3
+                elif len(args) > 3:
                     print (RED + "Too many arguments..." + RESET)
                 else:
                     print (RED + "Argument error..." + RESET)

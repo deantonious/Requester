@@ -44,8 +44,8 @@ def help():
     print ("    set [url|method] [value]    Set url/method (Methods: POST / GET)")
     print ("    header [type] [value]       Add/Remove header (removes the header it exists)")
     print ("    parameter [type] [value]    Add/Remove parameter (removes the parameter it exists)")
-    print ("    output [file|console|none]  Set the output mode (use 'all' to use file and console output)")
-    print ("    values                      Display request values")
+    print ("    output [file|console|none]  Set the output mode (use 'output all' to use file and console outputs)")
+    print ("    values                      Display request values. (use 'values reset' to reset them)")
     print ("    send                        Execute request")
     print ("    exit                        Quit Requester console")
     print ("\n" + RESET)
@@ -71,11 +71,11 @@ while True:
             args.remove(args[3])
             
     command = args[0].lower()
-    print (args)
+    
     if command == "help":
         help()
 
-    elif command.lower() == "set":
+    elif command == "set":
         if len(args) == 3:
             if args[1].lower() == "url":
                 
@@ -98,7 +98,7 @@ while True:
         else:
             print (RED + "Not enough arguments...")
             
-    elif command.lower() == "header":
+    elif command == "header":
         if len(args) > 1:
             if args[1] in headers:
                 del headers[args[1]]
@@ -116,7 +116,7 @@ while True:
         else:
             print (RED + "Not enough arguments..." + RESET)
             
-    elif command.lower() == "parameter":
+    elif command == "parameter":
         if len(args) > 1:
             if args[1] in parameters:
                 del parameters[args[1]]
@@ -134,7 +134,7 @@ while True:
         else:
             print (RED + "Not enough arguments..." + RESET)
         
-    elif command.lower() == "output":
+    elif command == "output":
         if len(args) == 2:
             if args[1].lower() == "file":
                 output = "file"
@@ -153,16 +153,27 @@ while True:
             elif len(args) > 2:
                 print (RED + "Too many arguments..." + RESET)
             
-    elif command.lower() == "values":
-        print ("\n Request Values")
-        print (" ==============")
-        print ("    => URL : " + url)
-        print ("    => Method : " + method)
-        print ("    => Headers : " + str(headers))
-        print ("    => Parameters : " + str(parameters))
-        print ("    => Output Mode: " + output + "\n")
+    elif command == "values":
+        if len(args) > 1:
+            if args[1] == "reset":
+                url = ""
+                output = "none"
+                headers = { }
+                parameters = { }
+                method = "GET"
+                print ("Options set to default values!")
+            else:
+                print (RED + "Available options: reset" + RESET)
+        else:
+            print ("\n Request Values")
+            print (" ==============")
+            print ("    => URL : " + url)
+            print ("    => Method : " + method)
+            print ("    => Headers : " + str(headers))
+            print ("    => Parameters : " + str(parameters))
+            print ("    => Output Mode: " + output + "\n")
 
-    elif command.lower() == "send":
+    elif command == "send":
         if url != "":
             if len(headers) == 0:
                 confirmation = input("[#] Do you want to add the default headers? (y/n) ")
@@ -200,7 +211,7 @@ while True:
                 
         else:
             print (RED + "Please, set a valid url to send the request..." + RESET)
-    elif command.lower() == "exit":
+    elif command == "exit":
         print ("See you next time :)")
         break
     else:

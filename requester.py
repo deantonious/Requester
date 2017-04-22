@@ -83,7 +83,7 @@ while True:
                     url = args[2]
                     print ("URL set to '" + url + "'")
                 else:
-                    print (RED + "Please, enter the full url...")
+                    print (RED + "Please, enter the full url..." + RESET)
             elif args[1].lower() == "method":
                 if args[2].lower() == "post":
                     method = "POST"
@@ -94,9 +94,9 @@ while True:
                 else:
                     print ("Set the method to POST / GET")
             else:
-                print (RED + "Please, set the url / method parameter...")
+                print (RED + "Please, set the url / method parameter..." + RESET)
         else:
-            print (RED + "Not enough arguments...")
+            print (RED + "Not enough arguments..." + RESET)
             
     elif command == "header":
         if len(args) == 2:

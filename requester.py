@@ -1,23 +1,46 @@
-import requests
-import os
 import time
 
-print ("\n" +
+#Color Table
+RED   = "\033[1;31m"  
+BLUE  = "\033[1;34m"
+CYAN  = "\033[1;36m"
+GREEN = "\033[0;32m"
+RESET = "\033[0;0m"
+BOLD    = "\033[;1m"
+REVERSE = "\033[;7m"
+
+try:
+    import requests, colorama #Attempt to import non standard modules
+except ModuleNotFoundError: #If the modules are not found install them with pip
+    print("\n \nMissing required modules.\n \n")
+    install = input ("Attempt to install requirments? (y/n): ")
+    if install.lower() == "y":
+        import os, sys
+        os.system("pip install requests colorama")
+        print("If pip installation failed, you need to fix your environment variables.")
+        input("Press enter to continue...")
+        os.execl(sys.executable, sys.executable, * sys.argv)
+        del os, sys
+
+    else:
+        print("Your loss...")
+
+colorama.init()
+print ("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" + BOLD +
       "     ██████╗ ███████╗ ██████╗ ██╗   ██╗███████╗███████╗████████╗███████╗██████╗ \n" +
       "     ██╔══██╗██╔════╝██╔═══██╗██║   ██║██╔════╝██╔════╝╚══██╔══╝██╔════╝██╔══██╗\n" +
       "     ██████╔╝█████╗  ██║   ██║██║   ██║█████╗  ███████╗   ██║   █████╗  ██████╔╝\n" +
       "     ██╔══██╗██╔══╝  ██║▄▄ ██║██║   ██║██╔══╝  ╚════██║   ██║   ██╔══╝  ██╔══██╗\n" +
       "     ██║  ██║███████╗╚██████╔╝╚██████╔╝███████╗███████║   ██║   ███████╗██║  ██║\n" +
-      "     ╚═╝  ╚═╝╚══════╝ ╚══▀▀═╝  ╚═════╝ ╚══════╝╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝\n" +
-      "     v1.0 by deantonious and Jamz\n")
+      "     ╚═╝  ╚═╝╚══════╝ ╚══▀▀═╝  ╚═════╝ ╚══════╝╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝\n" + RESET +
+      "     v1.1 by deantonious and Jamz\n")
  
 def help():
-    print ("Requester command reference")
+    print (BOLD + "Requester command reference")
     print ("===========================\n")
-    print ("    COMMAND                     DESCRIPTION")
+    print (CYAN + "    COMMAND         "+RESET+GREEN+"            DESCRIPTION"+RESET+BOLD)
     print ("    -------                     -----------\n")
     print ("    help                        Display command reference")
-    print ("    depends                     Install/Update dependencies")
     print ("    set [url|method] [value]    Set url/method (Methods: POST / GET)")
     print ("    header [type] [value]       Add/Remove header (removes the header it exists)")
     print ("    parameter [type] [value]    Add/Remove parameter (removes the parameter it exists)")
@@ -25,7 +48,7 @@ def help():
     print ("    values                      Display request values")
     print ("    send                        Execute request")
     print ("    exit                        Quit Requester console")
-    print ("\n")
+    print ("\n" + RESET)
 
 def setup():
     help()
@@ -35,6 +58,8 @@ parameters = {  }
 method = "GET"
 url = ""
 output = False
+
+
 
 setup()
 while True:
@@ -50,11 +75,7 @@ while True:
 
     if command == "help":
         help()
-        
-    elif command.lower() == "depends":
-        update = input("[#] Do you want to install/update dependencies? (y/n) ")
-        if update.lower() == "y" or update.lower() == "":
-            os.system("pip install requests")
+
             
     elif command.lower() == "set":
         if len(args) == 3:

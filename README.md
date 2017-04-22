@@ -9,7 +9,6 @@
 COMMAND                   | DESCRIPTION
 --------------------------| -------------
 help                      |  Display command reference
-depends                   |  Install/Update dependencies
 set \[url\|method\] \[value\]  |  Set url/method (Methods: POST / GET)
 header \[type\] \[value\]     |  Add/Remove header (removes the header it exists)
 parameter \[type\] \[value\]  |  Add/Remove parameter (removes the parameter it exists)
@@ -31,7 +30,7 @@ exit                      |  Quit Requester console
 
 ## Screenshots
 
-![Requester Console](https://deantonious.es/wp-content/uploads/2017/04/requester_console.png)
+![Requester Console](https://deantonious.es/wp-content/uploads/2017/04/requester_console-1.png)
 Requester console
 
 *Thanks to James for helping teaching me the Python basics and helping me with the development!*

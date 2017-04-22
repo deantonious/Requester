@@ -108,9 +108,14 @@ while True:
                 headers[args[1]] = args[2]
                 print ("Added header '" + args[1] + ": " + args[2] + "'")
             else:
-                print ("Not enough arguments...")
+                if len(args) < 3
+                    print (RED + "Not enough arguments..." + RESET)
+                elif len(args) > 3
+                    print (RED + "Too many arguments..." + RESET)
+                else:
+                    print (RED + "Argument error..." + RESET)
         else:
-            print (RED + "Not enough arguments...")
+            print (RED + "Not enough arguments..." + RESET)
             
     elif command.lower() == "parameter":
         if len(args) > 1:
@@ -121,9 +126,14 @@ while True:
                 parameters[args[1]] = args[2]
                 print ("Added parameter '" + args[1] + "=" + args[2] + "'")
             else:
-               print (RED + "Not enough arguments...") 
+                if len(args) < 3
+                    print (RED + "Not enough arguments..." + RESET)
+                elif len(args) > 3
+                    print (RED + "Too many arguments..." + RESET)
+                else:
+                    print (RED + "Argument error..." + RESET)
         else:
-            print (RED + "Not enough arguments...")
+            print (RED + "Not enough arguments..." + RESET)
         
     elif command.lower() == "output":
         if len(args) == 2:
@@ -137,9 +147,12 @@ while True:
                 output = "none"
                 print ("Output disabled!")
             else:
-                print (RED + "Please, set the output to enable / disable")
+                print (RED + "Please, set the output to enable / disable" + RESET)
         else:
-            print (RED + "Not enough arguments...")
+            if len(args) < 2:
+                print (RED + "Not enough arguments..." + RESET)
+            elif len(args) > 2:
+                print (RED + "Too many arguments..." + RESET)
             
     elif command.lower() == "values":
         print ("\n Request Values")
@@ -178,16 +191,16 @@ while True:
                 print ("=> Response code: " + str(request.status_code))
 
             except ConnectionRefusedError:
-                print (RED + "Failed to connect, invalid url possible.")
+                print (RED + "Failed to connect, invalid url possible." + RESET)
             except requests.packages.urllib3.exceptions.NewConnectionError:
-                print(RED + "Failed to connect, invalid url possible.")
+                print(RED + "Failed to connect, invalid url possible." + RESET)
             except requests.packages.urllib3.exceptions.MaxRetryError:
-                print(RED + "Reached max retries, invalid url possible.")
+                print(RED + "Reached max retries, invalid url possible." + RESET)
             except requests.exceptions.ConnectionError:
-                print(RED + "Failed to connect, invalid url possible.")
+                print(RED + "Failed to connect, invalid url possible." + RESET)
                 
         else:
-            print (RED + "Please, set a valid url to send the request...")
+            print (RED + "Please, set a valid url to send the request..." + RESET)
     elif command.lower() == "exit":
         print ("See you next time :)")
         break

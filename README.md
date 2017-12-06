@@ -1,4 +1,4 @@
-[![Requester Logo](https://deantonious.es/wp-content/uploads/2017/04/requester_logo_1.jpg)](https://github.com/deantonious/Requester)
+[![Requester Logo](https://deantonious.es/uploads/requester_logo_1.jpg)](https://github.com/deantonious/Requester)
 
 ## Description
 

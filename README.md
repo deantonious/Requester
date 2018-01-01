@@ -22,20 +22,19 @@ header \[type\] \[value\]       |  Add/Remove header (use 'header \[type\]' to r
 parameter \[name\] \[value\]    |  Add/Remove parameter (use 'parameter \[name\]' to remove a parameter)
 cookie \[name\] \[value\]    	|  Add/Remove cookie (use 'cookie \[name\]' to remove a cookie)
 options                         |  Display request options (use 'options reset' to reset them all)
-set \[option\] \[value\]   		|  Set option value
+set \[option\] \[value\]   	|  Set option value
 send                            |  Execute request
 exit                            |  Quit Requester console
 	
 ## Installation and usage example
 
-1. Download the script to your computer and run it from terminal. 
-2. Run the depends command to install the dependencies
-3. Set the target url with "set url http://example.com"
-4. Set the request method with "set method [POST|GET]" (by default it's set to GET)
-5. (Optional) Set the request headers (if it is already set, you'll remove it)
-6. (Optional) Add parameters to the request with "parameter user username" (if it is already set, you'll remove it)
+1. Download the script to your computer and run it from terminal
+2. Set the target url with "set url http://example.com"
+3. Set the request method with "set method [POST|GET]" (by default it's set to GET)
+4. (Optional) Set the request headers (if it is already set, you'll remove it)
+5. (Optional) Add parameters to the request with "parameter user username" (if it is already set, you'll remove it)
 6. (Optional) Add cookies to the request with "cookies id 32lo2v46ol45hhl" (if it is already set, you'll remove it)
-7. (Optional) Set the file output mode with "output console"
+7. (Optional) Set the file output mode with "set output console"
 8. Send the request with "send"
 
 ## Screenshots

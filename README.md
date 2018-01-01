@@ -1,8 +1,8 @@
-[![Requester Logo](https://deantonious.es/wp-content/uploads/2017/04/requester_logo_1.jpg)](https://github.com/deantonious/Requester)
+[![Requester Logo](https://deantonious.es/content/images/requester_logo_1.png)](https://github.com/deantonious/Requester)
 
 ## Description
 
-> Create custom HTTP/HTTPS requests and saves the output to a text file. This is really useful for some CTF challenges and Web Pentesting. (Made to work with Python 3.6.1)
+> Create custom HTTP/HTTPS requests and saves the output to a text file. This is really useful for some CTF challenges and Web Pentesting. (Made to work with Python 3.6)
 
 ## Commands
 
@@ -11,14 +11,14 @@ Use this commands on the Requester console to configure and send your request:
 COMMAND                         | DESCRIPTION
 --------------------------      | -------------
 help                            |  Display command reference
-set \[url\|method\] \[value\]   |  Set url/method (Methods: POST / GET)
 header \[type\] \[value\]       |  Add/Remove header (use 'header \[type\]' to remove a heder)
 parameter \[name\] \[value\]    |  Add/Remove parameter (use 'parameter \[name\]' to remove a parameter)
-output \[file\|console\|none]   |  Set the output mode (use 'output all' to use file and console outputs)
+cookie \[name\] \[value\]    	|  Add/Remove cookie (use 'cookie \[name\]' to remove a cookie)
 options                         |  Display request options (use 'options reset' to reset them all)
+set \[option\] \[value\]   		|  Set url/method (Methods: POST / GET)
 send                            |  Execute request
 exit                            |  Quit Requester console
-
+	
 ## Installation and usage example
 
 1. Download the script to your computer and run it from terminal. 
@@ -27,12 +27,13 @@ exit                            |  Quit Requester console
 4. Set the request method with "set method [POST|GET]" (by default it's set to GET)
 5. (Optional) Set the request headers (if it is already set, you'll remove it)
 6. (Optional) Add parameters to the request with "parameter user username" (if it is already set, you'll remove it)
+6. (Optional) Add cookies to the request with "cookies id 32lo2v46ol45hhl" (if it is already set, you'll remove it)
 7. (Optional) Set the file output mode with "output console"
 8. Send the request with "send"
 
 ## Screenshots
 
-![Requester Console](https://deantonious.es/wp-content/uploads/2017/04/requester_console-1.png)
+![Requester Console](https://deantonious.es/content/images/requester.png)
 
 Requester console 
 

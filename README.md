@@ -22,7 +22,7 @@ header \[type\] \[value\]       |  Add/Remove header (use 'header \[type\]' to r
 parameter \[name\] \[value\]    |  Add/Remove parameter (use 'parameter \[name\]' to remove a parameter)
 cookie \[name\] \[value\]    	|  Add/Remove cookie (use 'cookie \[name\]' to remove a cookie)
 options                         |  Display request options (use 'options reset' to reset them all)
-set \[option\] \[value\]   		|  Set url/method (Methods: POST / GET)
+set \[option\] \[value\]   		|  Display request options (use 'options reset' to reset them all)
 send                            |  Execute request
 exit                            |  Quit Requester console
 	
